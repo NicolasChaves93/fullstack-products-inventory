@@ -1,9 +1,52 @@
-/* CSS simple para layout y espaciado */
+/* Layout y espaciado mejorado para una apariencia más moderna */
 
 .spacer {
   flex: 1 1 auto;
 }
 
-.main-content {
-  padding: 20px;
+.app-toolbar {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
 }
+
+.app-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.6px;
+}
+
+.title-group {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.app-subtitle {
+  font-size: 0.75rem;
+  opacity: 0.87;
+}
+
+.main-content {
+  padding: 24px 16px;
+  background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%);
+  min-height: calc(100vh - 72px);
+}
+
+.page-container {
+  /* Usar todo el ancho disponible para que la UI sea fluida */
+  width: 100%;
+  margin: 0;
+  padding: 0 12px; /* mantener algo de espacio lateral en pantallas grandes */
+}
+
+/* Ajustes responsivos */
+@media (max-width: 600px) {
+  .app-toolbar { height: 64px; }
+  .app-title { font-size: 0.95rem; }
+}
+
+/* Stronger toolbar contrast on small screens too */
+.mat-toolbar.mat-primary { background-image: linear-gradient(90deg, var(--primary-700), var(--primary-500)); }
+.app-toolbar .menu-button { margin-right: 8px; }

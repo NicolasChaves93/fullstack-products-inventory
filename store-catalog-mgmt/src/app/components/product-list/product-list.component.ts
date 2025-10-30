@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -11,6 +12,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
+
 
 import { Product, ProductPage } from '../../models/product.model';
 import { ProductService } from '../../services/product.service';
@@ -27,8 +30,9 @@ import { InventoryManagerComponent } from '../inventory-manager/inventory-manage
     MatFormFieldModule,
     MatTableModule,
     MatSlideToggleModule,
-    MatPaginatorModule
-  ], // Importar el componente de inventario
+    MatPaginatorModule,
+    MatIconModule
+  ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss'
 })
@@ -41,6 +45,7 @@ export class ProductListComponent implements OnInit {
   productPage: ProductPage | null = null;
   currentPage: number = 0;
   pageSize: number = 5;
+  pageSizeOptions: number[] = [5, 10, 20];
   sort: string = 'name,asc';
   loading: boolean = true;
 
@@ -118,5 +123,11 @@ export class ProductListComponent implements OnInit {
     if (this.productPage && newPage >= 0 && newPage < this.productPage.totalPages) {
       this.fetchProducts(newPage);
     }
+  }
+
+  onPage(event: PageEvent): void {
+    // Server-side pagination: request the chosen page and pageSize
+    this.pageSize = event.pageSize;
+    this.fetchProducts(event.pageIndex);
   }
 }

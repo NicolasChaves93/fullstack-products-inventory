@@ -76,4 +76,14 @@ export class InventoryManagerComponent implements OnInit {
       }
     });
   }
+
+  decrement(): void {
+    const current = this.newQuantity ?? 0;
+    this.newQuantity = Math.max(0, current - 1);
+  }
+
+  increment(): void {
+    const current = this.newQuantity ?? 0;
+    this.newQuantity = current + 1;
+  }
 }
