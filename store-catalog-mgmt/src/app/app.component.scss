@@ -1,5 +1,3 @@
-/* Layout y espaciado mejorado para una apariencia más moderna */
-
 .spacer {
   flex: 1 1 auto;
 }
@@ -8,45 +6,75 @@
   height: 72px;
   display: flex;
   align-items: center;
-  padding: 0 16px;
-}
-
-.app-title {
-  font-weight: 600;
-  font-size: 1.05rem;
-  letter-spacing: 0.6px;
+  padding: 0 24px;
+  background: linear-gradient(90deg, #0d47a1, #1976d2); // Más contraste
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .title-group {
   display: flex;
   flex-direction: column;
-  line-height: 1;
+  margin-left: 12px;
+}
+
+.app-title {
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
 }
 
 .app-subtitle {
-  font-size: 0.75rem;
-  opacity: 0.87;
+  font-size: 0.85rem;
+  color: #e3f2fd; // Contraste suave
 }
 
 .main-content {
   padding: 24px 16px;
-  background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%);
+  background: linear-gradient(180deg, #e3f2fd 0%, #ffffff 100%);
   min-height: calc(100vh - 72px);
+  transition: background 0.3s ease;
 }
 
 .page-container {
-  /* Usar todo el ancho disponible para que la UI sea fluida */
   width: 100%;
-  margin: 0;
-  padding: 0 12px; /* mantener algo de espacio lateral en pantallas grandes */
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
-/* Ajustes responsivos */
-@media (max-width: 600px) {
-  .app-toolbar { height: 64px; }
-  .app-title { font-size: 0.95rem; }
+/* Responsive */
+@media (max-width: 768px) {
+  .app-toolbar {
+    height: 64px;
+    padding: 0 16px;
+  }
+
+  .app-title {
+    font-size: 1rem;
+  }
+
+  .app-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .title-group {
+    margin-left: 8px;
+  }
 }
 
-/* Stronger toolbar contrast on small screens too */
-.mat-toolbar.mat-primary { background-image: linear-gradient(90deg, var(--primary-700), var(--primary-500)); }
-.app-toolbar .menu-button { margin-right: 8px; }
+@media (max-width: 480px) {
+  .app-toolbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .title-group {
+    align-items: center;
+    margin-left: 0;
+  }
+
+  .spacer {
+    display: none;
+  }
+}

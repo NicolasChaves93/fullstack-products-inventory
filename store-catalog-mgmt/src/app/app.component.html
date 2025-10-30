@@ -1,19 +1,22 @@
 <mat-toolbar color="primary" class="app-toolbar">
-	<button mat-icon-button class="menu-button" aria-label="Menu" disabled>
-		<mat-icon>menu</mat-icon>
-	</button>
-	<div class="title-group">
-		<span class="app-title">{{ 'Panel de Gestión' | uppercase }}</span>
-		<span class="app-subtitle">Catálogo y control de inventario</span>
-	</div>
-	<span class="spacer"></span>
-	<button mat-icon-button aria-label="Settings">
-		<mat-icon>settings</mat-icon>
-	</button>
+  <button mat-icon-button class="menu-button" aria-label="Menú" disabled>
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <div class="title-group">
+    <span class="app-title">{{ 'Panel de Gestión' | uppercase }}</span>
+    <span class="app-subtitle">Catálogo y control de inventario</span>
+  </div>
+
+  <span class="spacer"></span>
+
+  <button mat-icon-button aria-label="Configuración">
+    <mat-icon>settings</mat-icon>
+  </button>
 </mat-toolbar>
 
 <main class="main-content">
-	<div class="page-container">
-		<router-outlet></router-outlet>
-	</div>
+  <div class="page-container">
+    <router-outlet></router-outlet>
+  </div>
 </main>

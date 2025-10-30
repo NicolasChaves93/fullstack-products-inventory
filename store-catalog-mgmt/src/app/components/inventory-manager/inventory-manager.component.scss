@@ -1,34 +1,68 @@
-/* Estilos compactos para el gestor de inventario embebido */
-/* Estilos compactos para el gestor de inventario embebido */
 .inventory-manager-container {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
-	align-items: flex-start;
-	width: 100%; /* ocupar todo el ancho del contenedor padre */
-}
-
-.current-stock {
-	margin: 0;
-	font-size: 0.95rem;
-	color: rgba(0,0,0,0.85);
-}
-
-/* layout del formulario inline */
-.input-group {
   display: flex;
+  flex-direction: column;
   gap: 8px;
+  width: 100%;
+  padding: 4px 0;
+}
+
+.stock-row {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-.inventory-form { display: flex; align-items: center; gap: 8px; }
-.quantity-input { width: 120px; flex: 0 0 120px; }
+.inventory-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px; // separación del siguiente producto
+}
 
-.inventory-form button[mat-flat-button] { margin-left: 8px; }
+.quantity-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
 
+.quantity-input {
+  width: 100px;
+}
 
-.loading-icon { animation: spin 1s linear infinite; }
+.submit-group {
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+}
 
-.error-message { color: #d32f2f; margin: 0; }
+button mat-progress-spinner {
+  margin-right: 6px;
+}
 
-@keyframes spin { from { transform: rotate(0deg);} to { transform: rotate(360deg);} }
+.error-message {
+  color: #d32f2f;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .quantity-group {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .quantity-input {
+    flex: 1;
+    width: auto;
+  }
+
+  .submit-group {
+    justify-content: center;
+  }
+}

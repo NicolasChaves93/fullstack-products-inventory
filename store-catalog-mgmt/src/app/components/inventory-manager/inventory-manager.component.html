@@ -1,30 +1,33 @@
 <div class="inventory-manager-container">
-
   <div class="stock-row">
-    <span class="label">Stock </span>
+    <span class="label">Stock</span>
     <span class="stock-value">{{ loading ? '...' : currentStock }}</span>
   </div>
 
   <form (ngSubmit)="updateInventory()" class="inventory-form">
-    <button mat-icon-button type="button" aria-label="disminuir" (click)="decrement()">
-      <mat-icon>remove</mat-icon>
-    </button>
+    <div class="quantity-group">
+      <button mat-icon-button type="button" (click)="decrement()" aria-label="Disminuir cantidad">
+        <mat-icon>remove</mat-icon>
+      </button>
 
-    <mat-form-field appearance="outline" class="quantity-input">
-      <mat-label>Cantidad</mat-label>
-      <input matInput type="number" [(ngModel)]="newQuantity" name="newQuantity" min="0" required>
-    </mat-form-field>
+      <mat-form-field appearance="outline" class="quantity-input">
+        <mat-label>Cantidad</mat-label>
+        <input matInput type="number" [(ngModel)]="newQuantity" name="newQuantity" min="0" required>
+      </mat-form-field>
 
-    <button mat-icon-button type="button" aria-label="aumentar" (click)="increment()">
-      <mat-icon>add</mat-icon>
-    </button>
+      <button mat-icon-button type="button" (click)="increment()" aria-label="Aumentar cantidad">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
 
-    <button mat-flat-button color="accent" type="submit" [disabled]="loading || newQuantity < 0 || newQuantity === currentStock">
-      <mat-icon *ngIf="loading" class="loading-icon">autorenew</mat-icon>
-      <span *ngIf="!loading">Actualizar</span>
-    </button>
+    <div class="submit-group">
+      <button mat-flat-button color="accent" type="submit"
+              [disabled]="loading || newQuantity < 0 || newQuantity === currentStock">
+        <mat-progress-spinner *ngIf="loading" diameter="20" mode="indeterminate"></mat-progress-spinner>
+        <span *ngIf="!loading">Actualizar</span>
+      </button>
+    </div>
   </form>
 
   <p *ngIf="error" class="error-message mat-caption">{{ error }}</p>
-
 </div>

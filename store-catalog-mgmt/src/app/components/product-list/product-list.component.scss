@@ -1,142 +1,276 @@
+/* Contenedor general */
 .container-material {
-    padding: 12px;
+  padding: 16px;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
-mat-toolbar {
-    margin-bottom: 16px;
+/* Toolbar superior */
+.page-toolbar {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #0288d1, #26c6da);
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
-.creation-card, .list-card {
-    margin-bottom: 22px;
-    border-radius: 8px;
+/* Layout principal */
+.grid-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 24px;
 }
 
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 16px;
-    align-items: end; /* Alinea el botón con los inputs */
+.left-col,
+.right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.full-width { grid-column: 1 / -1; }
+/* Tarjetas */
+.creation-card,
+.list-card {
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  transition: box-shadow 0.3s ease;
+}
+
+.creation-card:hover,
+.list-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Formulario de creación */
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 8px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+mat-form-field {
+  flex: 1;
+  min-width: 240px;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+button mat-icon.btn-icon {
+  margin-right: 6px;
+}
+
+/* Encabezado visual del catálogo */
+.catalog-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #e3f2fd, #ffffff);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.catalog-icon {
+  font-size: 32px;
+  color: #1976d2;
+}
+
+.catalog-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.catalog-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+  color: #0d47a1;
+}
+
+.catalog-subtitle {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 2px;
+}
+
+/* Tabla */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding-bottom: 8px;
+}
+
+.mat-table th.mat-header-cell,
+.mat-table td.mat-cell {
+  padding: 12px 16px;
+  vertical-align: middle;
+  word-break: break-word;
+}
+
+.name-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 
 .description-text {
-    font-size: 0.8rem;
-    color: rgba(0,0,0,0.6);
-    margin-top: 6px;
+  font-size: 0.85rem;
+  color: #616161;
 }
 
-/* Estilos de la tabla: mejorar legibilidad y hacerla scrollable en pantallas pequeñas */
-.mat-elevation-z2 {
-    width: 100%;
-    overflow: auto;
-    border-radius: 6px;
+.mat-row {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.mat-table {
-    min-width: 640px; /* permite scrolling horizontal en móviles */
+.mat-row + .mat-row {
+  margin-top: 16px;
 }
 
-.mat-column-actions, .mat-column-active { width: 140px; text-align: center; }
-.mat-column-inventory { width: 260px; }
+/* Inventario */
+.inventory-manager-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding: 4px 0;
+}
 
+.stock-row {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inventory-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.quantity-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.quantity-input {
+  width: 100px;
+}
+
+.submit-group {
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+button mat-progress-spinner {
+  margin-right: 6px;
+}
+
+.error-message {
+  color: #d32f2f;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+/* Paginación */
 .pagination-footer {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 10px 0;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
 }
 
-.pagination-footer .page-info { margin: 0 12px; font-weight: 500; }
-
-/* Visual polish for rows */
-tr.mat-row:hover { background: rgba(0,0,0,0.02); }
-
-/* Small utility classes */
-.muted { color: rgba(0,0,0,0.6); font-size: 0.85rem; }
-
-@media (max-width: 600px) {
-    .creation-card, .list-card { margin-left: 4px; margin-right: 4px; }
-    .mat-column-actions, .mat-column-active { width: 110px; }
-}
-
-/* --- Mejoras de contraste y espaciado para que el catálogo no se vea apretado --- */
-.list-card { padding: 8px 12px; }
-.list-card .mat-card-content { padding: 12px; }
-
-.table-wrapper { max-height: 60vh; overflow: auto; }
-
-.mat-table th.mat-header-cell, .mat-table td.mat-cell {
-    padding-top: 16px;
-    padding-bottom: 16px;
-}
-
-/* Responsive: convertir filas de la tabla en tarjetas apiladas en pantallas pequeñas */
-@media (max-width: 900px) {
-    .mat-table, .mat-header-row { display: block; }
-    .mat-header-row { display: none; }
-    .mat-row, tr.mat-row { display: block; margin-bottom: 12px; border-radius: 8px; background: #fff; box-shadow: 0 6px 14px rgba(2,6,23,0.04); padding: 10px; }
-    .mat-cell { display: flex; justify-content: space-between; padding: 10px 12px; border-bottom: 1px solid rgba(0,0,0,0.04); }
-    .mat-cell:last-child { border-bottom: none; }
-    .mat-cell .description-text { display: block; color: var(--muted); margin-top: 6px; }
-    /* Acción y estado al final, centrados */
-    .mat-column-actions, .mat-column-active, .mat-column-inventory { width: auto; text-align: right; }
-}
-
-/* Aumentar hit area y espacio de botones */
-.mat-column-actions button { padding: 6px 12px; }
-
-/* Layout grid: left column for creation form, right column for list */
-.grid-layout {
-    display: grid;
-    /* Fijar formulario y usar el resto del ancho para catálogo/inventario */
-    grid-template-columns: 300px 1fr;
-    gap: 28px;
-    align-items: start;
-}
-
-.left-col { display: flex; flex-direction: column; gap: 12px; }
-.right-col { display: flex; flex-direction: column; gap: 12px; }
-
-.page-toolbar { display:flex; gap:12px; align-items:center; padding: 8px 12px; border-radius: 8px; }
-.search-field { width: 320px; }
-
+/* Responsive */
 @media (max-width: 1200px) {
-    /* En pantallas medianas reducimos un poco la columna del formulario pero mantenemos el catálogo amplio */
-    .grid-layout { grid-template-columns: 360px minmax(480px, 1fr); }
+  .grid-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .creation-card {
+    margin-bottom: 24px;
+  }
 }
 
 @media (max-width: 900px) {
-    .grid-layout { grid-template-columns: 1fr; }
+  .mat-table,
+  .mat-header-row {
+    display: none;
+  }
+
+  .mat-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding: 16px;
+    border-radius: 8px;
+    background: #f1f8e9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #8bc34a;
+  }
+
+  .mat-cell {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+    padding: 6px 0;
+  }
+
+  .mat-cell > span,
+  .mat-cell > p {
+    margin: 2px 0;
+    flex: 1 1 auto;
+  }
+
+  .pagination-footer {
+    justify-content: center;
+  }
 }
 
-/* Hacer que el catálogo respire más */
+@media (max-width: 480px) {
+  .quantity-group {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 12px;
+  }
 
-.right-col { padding-left: 6px; }
-.table-wrapper { max-width: 100%; overflow-x: visible; overflow-y: visible; padding: 6px 0; }
-.list-card { padding: 14px; }
+  .quantity-input {
+    flex: 1;
+    width: auto;
+  }
 
-/* Dejar que la tabla ajuste columnas automáticamente y evitar cortes en celdas */
-.mat-table { width: 100% !important; table-layout: auto !important; border-collapse: separate; word-break: break-word; }
-.mat-table th.mat-header-cell, .mat-table td.mat-cell { box-sizing: border-box; padding: 12px 14px; }
-.mat-cell, .mat-header-cell { white-space: normal; word-wrap: break-word; overflow-wrap: anywhere; }
-
-/* Ajustar anchos de columna para que no crezcan en exceso; si hace falta, el usuario podrá hacer scroll horizontal */
-.mat-column-code { width: 80px; max-width: 80px; }
-.mat-column-price { width: 100px; max-width: 100px; }
-.mat-column-active { width: 120px; max-width: 120px; }
-.mat-column-actions { width: 140px; max-width: 140px; }
-.mat-column-inventory { width: 360px; max-width: 360px; }
-
-/* Ajustes para name block para que no estire la celda */
-.name-block { display: block; max-width: 100%; }
-.name-block .description-text { margin: 6px 0 0 0; color: var(--muted); }
-
-@media (max-width: 900px) {
-    /* en móviles usamos el comportamiento en tarjetas ya definido */
-    .mat-table, .mat-header-row { display: block; }
-    .mat-header-row { display: none; }
-    .mat-row, tr.mat-row { display: block; margin-bottom: 12px; }
-    .mat-cell { display: flex; justify-content: space-between; padding: 10px 12px; }
+  .submit-group {
+    justify-content: center;
+  }
 }
-
