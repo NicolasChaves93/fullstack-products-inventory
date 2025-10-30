@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Small global helpers */
+.btn-icon { margin-right: 8px; vertical-align: middle; }
+.table-wrapper { overflow: auto; }
+
+:root {
+	--primary-700: #0d47a1; /* deeper blue */
+	--primary-500: #1565c0;
+	--accent-500: #ff7043; /* warmer accent */
+	--card-bg: #ffffff;
+	--muted: rgba(0,0,0,0.6);
+}
+
+/* Global overrides for Angular Material colors to increase contrast */
+.mat-toolbar.mat-primary { background-color: var(--primary-700) !important; color: #fff; }
+.mat-raised-button.mat-primary { background-color: var(--primary-500) !important; color: #fff; }
+.mat-flat-button.mat-accent, .mat-button.mat-accent { color: var(--accent-500); }
+
+/* Elevate cards slightly and increase padding */
+.mat-card { background: var(--card-bg); box-shadow: 0 6px 18px rgba(15,23,42,0.08); border-radius: 10px; }
+.mat-card .mat-card-content { padding: 18px; }
+
+/* Table cell padding and typography tweaks */
+.mat-cell, .mat-header-cell { padding: 14px 18px; }
+.mat-header-cell { font-weight: 600; color: rgba(0,0,0,0.75); }
+
+/* Improve legibility of small text */
+body { color-scheme: light dark; }
+

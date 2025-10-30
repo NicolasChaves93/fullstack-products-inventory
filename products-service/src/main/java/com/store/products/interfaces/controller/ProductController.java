@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.store.products.application.service.ProductService;
 import com.store.products.domain.model.Product;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1/products")
 public class ProductController {
@@ -33,9 +35,9 @@ public class ProductController {
         return ResponseEntity.ok(productService.findAll(pageable));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Product> findById(@PathVariable Long id) {
-        return ResponseEntity.ok(productService.findById(id));
+    @GetMapping("/{code}")
+    public ResponseEntity<Product> findByCode(@PathVariable String code) {
+    	return ResponseEntity.ok(productService.findByCode(code)); 
     }
 
     @PostMapping

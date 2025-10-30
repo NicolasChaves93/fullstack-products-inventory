@@ -6,16 +6,16 @@ import com.store.products.domain.exception.ProductNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class GetProductByIdUseCase {
+public class GetProductByCodeUseCase {
 
     private final ProductRepository productRepository;
 
-    public GetProductByIdUseCase(ProductRepository productRepository) {
+    public GetProductByCodeUseCase(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
-    public Product execute(Long id) {
-        return productRepository.findById(id)
-                .orElseThrow(() -> new ProductNotFoundException("Product with id " + id + " not found"));
+    public Product execute(String code) {
+        return productRepository.findByCode(code)
+                .orElseThrow(() -> new ProductNotFoundException("Prodcuto con codigo " + code + " no encontrado"));
     }
 }
