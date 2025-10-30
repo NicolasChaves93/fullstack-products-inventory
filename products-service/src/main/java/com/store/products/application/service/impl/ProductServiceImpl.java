@@ -12,19 +12,19 @@ import org.springframework.data.domain.Pageable;
 public class ProductServiceImpl implements ProductService {
 
     private final CreateProductUseCase createProductUseCase;
-    private final GetProductByIdUseCase getProductByIdUseCase;
+    private final GetProductByCodeUseCase getProductByCodeUseCase;
     private final GetAllProductsUseCase getAllProductsUseCase;
     private final UpdateProductUseCase updateProductUseCase;
     private final DeleteProductUseCase deleteProductUseCase;
 
     public ProductServiceImpl(
             CreateProductUseCase createProductUseCase,
-            GetProductByIdUseCase getProductByIdUseCase,
+            GetProductByCodeUseCase getProductByCodeUseCase,
             GetAllProductsUseCase getAllProductsUseCase,
             UpdateProductUseCase updateProductUseCase,
             DeleteProductUseCase deleteProductUseCase) {
         this.createProductUseCase = createProductUseCase;
-        this.getProductByIdUseCase = getProductByIdUseCase;
+        this.getProductByCodeUseCase = getProductByCodeUseCase;
         this.getAllProductsUseCase = getAllProductsUseCase;
         this.updateProductUseCase = updateProductUseCase;
         this.deleteProductUseCase = deleteProductUseCase;
@@ -42,7 +42,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product findById(Long id) {
-        return getProductByIdUseCase.execute(id);
+    	throw new UnsupportedOperationException("findById no esta implementado en esta versión. Use findByCode.");
+    }
+    
+    @Override
+    public Product findByCode(String code) {
+        return getProductByCodeUseCase.execute(code);
     }
 
     @Override

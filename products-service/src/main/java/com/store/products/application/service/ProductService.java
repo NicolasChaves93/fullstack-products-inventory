@@ -8,6 +8,7 @@ import com.store.products.domain.model.Product;
 public interface ProductService {
     Product create(Product product);
     Product update(Long id, Product product);
+    Product findByCode(String code);
     Product findById(Long id);
     Page<Product> findAll(Pageable pageable);
     void delete(Long id);
