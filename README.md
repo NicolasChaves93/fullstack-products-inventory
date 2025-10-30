@@ -320,3 +320,16 @@ GET /health
 - Configuración centralizada en `application.yml`.  
 - Pruebas unitarias e integración en `src/test/java`.  
 - Documentación de la API disponible en `/swagger-ui.html` o `/swagger-ui/`.
+
+---
+
+## Documentación
+
+La documentación técnica y los diagramas del proyecto están en la carpeta `docs/`. Puedes navegar a estos archivos directamente desde GitHub o desde tu copia local.
+
+Enlaces rápidos (relativos):
+
+- Arquitectura técnica — [docs/01_Arquitectura_Tecnica.md](docs/01_Arquitectura_Tecnica.md)
+- Flujo funcional — [docs/02_Flujo_Funcional.md](docs/02_Flujo_Funcional.md)
+- Modelo de datos — [docs/03_Modelo_Datos.md](docs/03_Modelo_Datos.md)
+- Diagramas (draw.io) — [docs/Diagramas.drawio](docs/Diagramas.drawio)
