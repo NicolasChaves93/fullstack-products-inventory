@@ -1,0 +1,57 @@
+.container-material {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+mat-toolbar {
+    margin-bottom: 20px;
+}
+
+.creation-card, .list-card {
+    margin-bottom: 30px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: end; // Alinea el botón con los inputs
+}
+
+.full-width {
+    grid-column: span 3; // Ocupa toda la fila para la descripción
+}
+
+.description-text {
+    font-size: 0.75rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+// Estilos de la tabla
+.mat-elevation-z2 {
+    width: 100%;
+}
+
+.mat-column-actions, .mat-column-active {
+    width: 120px;
+    text-align: center;
+}
+
+.mat-column-inventory {
+    width: 250px; 
+}
+
+// Estilos para la paginación manual
+.pagination-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 0;
+    
+    .page-info {
+        margin: 0 15px;
+        font-weight: 500;
+    }
+}
