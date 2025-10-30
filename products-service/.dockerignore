@@ -1,0 +1,15 @@
+# Directorios ignorados comunes
+target/
+.mvn/
+.gradle/
+build/
+bin/
+
+# IDE y Sistema
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+log/
+tmp/

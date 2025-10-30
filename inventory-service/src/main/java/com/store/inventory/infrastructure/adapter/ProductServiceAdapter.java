@@ -9,8 +9,8 @@ import com.store.inventory.domain.out.ProductVerificationPort;
 @Component
 public class ProductServiceAdapter implements ProductVerificationPort {
 
-	private final WebClient webClient;
-    private final String PRODUCTS_SERVICE_URL = "http://localhost:8080/api/v1/products/"; // URL del Microservicio
+    private final WebClient webClient;
+    private final String PRODUCTS_SERVICE_URL = "http://products-service:8080/api/v1/products/";
 
     public ProductServiceAdapter(WebClient webClient) {
         this.webClient = webClient;
@@ -20,20 +20,20 @@ public class ProductServiceAdapter implements ProductVerificationPort {
     public boolean isProductExist(String productCode) {
         try {
             this.webClient.get()
-                .uri(PRODUCTS_SERVICE_URL + "{productCode}", productCode) 
-                .retrieve()
-                .toBodilessEntity()
-                .block();
+                    .uri(PRODUCTS_SERVICE_URL + "{productCode}", productCode)
+                    .retrieve()
+                    .toBodilessEntity()
+                    .block();
 
             return true;
-            
+
         } catch (WebClientResponseException.NotFound notFoundException) {
             // Manejo específico del error 404.
             return false;
-            
+
         } catch (Exception e) {
             System.err.println("Error al verificar producto con Products Service: " + e.getMessage());
-            return false; 
+            return false;
         }
     }
 }

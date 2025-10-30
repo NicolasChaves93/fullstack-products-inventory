@@ -1,0 +1,14 @@
+# Dependencias de Node
+node_modules/
+
+# Directorios de build y caché
+dist/
+tmp/
+.cache/
+.angular/
+
+# Logs y configuración
+npm-debug.log
+.idea/
+.vscode/
+.DS_Store

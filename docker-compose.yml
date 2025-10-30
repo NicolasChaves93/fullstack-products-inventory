@@ -1,0 +1,81 @@
+version: '3.8'
+
+services:
+  # -------------------------------------
+  # 1. SERVICIO DE BASE DE DATOS (POSTGRES)
+  # -------------------------------------
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      
+      POSTGRES_DB: inventorydb
+      POSTGRES_MULTIPLE_DATABASES: "productsdb,inventorydb"
+    
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+      - ./docker/init-multiple-db.sh:/docker-entrypoint-initdb.d/init-multiple-db.sh 
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d inventorydb"] 
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # -------------------------------------
+  # 2. SERVICIO BACKEND 1 (INVENTARIO)
+  # -------------------------------------
+  inventory-service:
+    build:
+      context: ./inventory-service
+      dockerfile: Dockerfile
+    container_name: inventory_backend
+    ports:
+      - "8081:8081" 
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/inventorydb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+
+      
+  # -------------------------------------
+  # 3. SERVICIO BACKEND 2 (PRODUCTOS)
+  # -------------------------------------
+  products-service:
+    build:
+      context: ./products-service
+      dockerfile: Dockerfile
+    container_name: products_backend
+    ports:
+      - "8080:8080" 
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/productsdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      
+  # -------------------------------------
+  # 4. SERVICIO FRONTEND
+  # -------------------------------------
+  frontend:
+    build:
+      context: ./store-catalog-mgmt 
+      dockerfile: Dockerfile
+    container_name: angular_frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - inventory-service
+      - products-service
+
+volumes:
+  postgres-data:
